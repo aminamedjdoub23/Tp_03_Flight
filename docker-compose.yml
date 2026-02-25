@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  datascience-env:
+    build: .
+    container_name: flight_data_analysis
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
