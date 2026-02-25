@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns   
 
 df = pd.read_csv("Clean_Dataset.csv")
-df = pd.read_csv("economy.csv")
-df = pd.read_csv("business.csv")
 
 
 df = df.drop(df.columns[0], axis=1)  # ne contient que des Id inutiles
