@@ -6,9 +6,9 @@ import numpy as np
 import os
 
 
-#MODEL_PATH = "random_forest_flights.pkl"
-MODEL_PATH = "random_forest_flights_economy.pkl"
-#MODEL_PATH = "random_forest_flights_business.pkl"
+MODEL_PATH = "random_forest_flight_price.pkl"
+#MODEL_PATH = "random_forest_flight_price_economy.pkl"
+#MODEL_PATH = "random_forest_flight_price_business.pkl"
 model = joblib.load(MODEL_PATH)
 
 app = FastAPI(title="Flight Price Prediction API", version="1.0")
