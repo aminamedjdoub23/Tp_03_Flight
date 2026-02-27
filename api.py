@@ -6,8 +6,8 @@ import numpy as np
 import os
 
 
-MODEL_PATH = "random_forest_flights.pkl"
-#MODEL_PATH = "random_forest_flights_economy.pkl"
+#MODEL_PATH = "random_forest_flights.pkl"
+MODEL_PATH = "random_forest_flights_economy.pkl"
 #MODEL_PATH = "random_forest_flights_business.pkl"
 model = joblib.load(MODEL_PATH)
 
