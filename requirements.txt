@@ -8,3 +8,6 @@ fastapi
 uvicorn
 pydantic
 joblib
+pyarrow
+streamlit
+requests

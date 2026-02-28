@@ -15,7 +15,6 @@ app = FastAPI(title="Flight Price Prediction API", version="1.0")
 
 class FlightFeatures(BaseModel):
     airline:str = Field(...,description="airline of flight")
-    flight:str = Field(...,description="flight of flight")
     source_city:str = Field(...,description="source city of flight")
     departure_time:str = Field(...,description="departure time of flight")
     stops:str = Field(...,description="number of stops of flight")
