@@ -41,8 +41,11 @@ with st.form("prediction_form"):
         arrival_time = st.selectbox("Heure d'Arrivée", TIME_OPTIONS, format_func=lambda x: TIME_DISPLAY[x])
         duration = st.select_slider("Durée du vol", options=DURATION_VALS, value=2.5, format_func=format_duration)
         days_left = st.slider("Jours avant le départ", min_value=1, max_value=50, value=5)
-        
-    submit_button = st.form_submit_button(label="Prédire le Prix")
+    
+    st.markdown("---")
+    st.subheader("Configuration du Modèle")
+    model_type = st.selectbox("Modèle de Prédiction", ["Global", "Economy", "Business"], help="Choisissez le modèle IA spécifique à utiliser pour la prédiction.")
+    submit_button = st.form_submit_button(label="Prédire le Prix", use_container_width=True)
 
 if submit_button:
     data = {
@@ -54,7 +57,8 @@ if submit_button:
         "destination_city": destination_city,
         "class_ticket": class_ticket,
         "duration": float(duration),
-        "days_left": int(days_left)
+        "days_left": int(days_left),
+        "model_type": model_type
     }
     
     with st.spinner("Analyse par notre modèle d'Intelligence Artificielle..."):

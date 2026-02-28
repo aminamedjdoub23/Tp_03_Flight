@@ -52,7 +52,7 @@ docker-compose up --build
 
 **2. Tester le modèle visuellement !**
 - Allez sur la page de l'Application Web Streamlit : **`http://127.0.0.1:8501`**
-Sélectionnez votre ville, la durée du vol, etc. et cliquez sur Prédire pour voir la magie opérer !
+Sélectionnez votre ville, la durée du vol, etc. et cliquez sur Prédire pour voir la prédiction de nos modèles !
 
 *l'API pure tourne en background sur `http://127.0.0.1:8000/docs`).*
 

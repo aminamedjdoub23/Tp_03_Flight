@@ -1,0 +1,6 @@
+--- Model: random_forest_flight_price.pkl ---
+feature_names_in_: ['airline', 'source_city', 'departure_time', 'stops', 'arrival_time', 'destination_city', 'class_ticket', 'duration', 'days_left']
+--- Model: random_forest_flight_price_economy.pkl ---
+feature_names_in_: ['airline', 'source_city', 'departure_time', 'stops', 'arrival_time', 'destination_city', 'duration', 'days_left']
+--- Model: random_forest_flight_price_business.pkl ---
+feature_names_in_: ['airline', 'source_city', 'departure_time', 'stops', 'arrival_time', 'destination_city', 'duration', 'days_left']
