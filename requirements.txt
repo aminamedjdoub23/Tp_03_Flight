@@ -1,6 +1,13 @@
-pandas
+pandas>=2.2.3,<3.0.0
 numpy
 matplotlib
 seaborn
 scikit-learn
 jupyter
+fastapi
+uvicorn
+pydantic
+joblib
+pyarrow
+streamlit
+requests

@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copier tout le reste du code de l'application
 COPY . .
 
-# Exposer le port par défaut de Jupyter Notebook
-EXPOSE 8888
+# Exposer le port de l'API FastAPI
+EXPOSE 8000
 
 # Commande par défaut au lancement du conteneur
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
