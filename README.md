@@ -26,11 +26,11 @@ Il contient des informations sur des vols indiens : durée, compagnie aérienne,
 10) **Jours restants** : différence entre date de réservation et date du voyage.
 11) **Prix** : variable cible.
 
-## Ce qui a été fait
+## Travail réalisé
 
 - **EDA & Preprocessing** : étude des données, gestion des valeurs manquantes, encodage et normalisation selon les besoins.
 - **Modèle non supervisé (K-Means)** : segmentation des vols en profils types selon le prix et la durée.
-- **Modèle supervisé (Random Forest)** : prédiction du prix des billets, export du modèle en `.pkl`.
+- **Modèles supervisés (Random Forest + Linear Regression + Ridge Regression)** : prédiction du prix des billets, export du modèle en `.pkl`.
 - **API & interface web** : API FastAPI (`/predict`) + interface Streamlit pour tester les prédictions.
 
 ## Lancer le projet avec Docker
