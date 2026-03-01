@@ -1,59 +1,55 @@
 # Évaluation Finale - Data Science avec Python : Projet de Prédiction de Prix de Vols
 
-Ce dépôt rassemble notre travail pour l'évaluation finale. Le but principal était d'analyser un dataset de vols indiens, de préparer les données, et de créer à la fois un modèle prédictif (Supervisé) et un modèle de segmentation (Non Supervisé).
-Probematique : predire le prix d'un vol en fonction de ses caractéristiques (durée, compagnie, etc.) et segmenter les types de vols selon leurs caractéristiques pour des compagnie qui souhaitent trouver quand acheter leur billets des vols et reduire les couts liés à l'achat du dernier minute.
+Ce dépôt rassemble notre travail pour l'évaluation finale.
+Le but principal est d'analyser un dataset de vols indiens, de préparer les données, puis de construire un modèle prédictif (supervisé) et un modèle de segmentation (non supervisé).
 
-## Dataset
-Le dataset utilisé est un ensemble de données de vols indiens disponible sur Kaggle : https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction, et comprenant des informations telles que la durée du vol, la compagnie aérienne, le nombre d'escales, et le prix du billet.
-Total données : 
-    300153 lignes et 11 colonnes (features).
-    
-Colonnes : 
-1) Compagnie aérienne : Le nom de la compagnie aérienne est stocké dans la colonne correspondante. Il s'agit d'une variable catégorielle qui comprend 6 compagnies aériennes différentes.
+**Problématique :** prédire le prix d'un vol en fonction de ses caractéristiques (durée, compagnie, escales, etc.) et segmenter les types de vols pour aider à mieux décider quand acheter un billet et limiter les coûts liés aux réservations de dernière minute.
 
-2) Vol : La variable « Vol » contient le code de vol de l'avion. Il s'agit d'une variable catégorielle.
+### DATASET
+Le dataset est disponible sur Kaggle : https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction
 
-3) Ville de départ : Ville de départ du vol. Il s'agit d'une variable catégorielle qui comprend 6 villes uniques.
+Il contient des informations sur des vols indiens : durée, compagnie aérienne, nombre d'escales, prix du billet, etc.
 
-4) Heure de départ : Cette variable catégorielle dérivée est obtenue en regroupant les périodes de temps en intervalles. Elle stocke l'heure de départ et comprend 6 étiquettes horaires uniques.
+**Taille :** 300 153 lignes et 11 colonnes (features + cible).
 
-5) Escales : Cette variable catégorielle à 3 valeurs distinctes stocke le nombre d'escales entre les villes de départ et d'arrivée.
+### Colonnes
 
-6) Heure d'arrivée : Cette variable catégorielle dérivée est créée en regroupant les intervalles de temps. Elle comprend six étiquettes horaires distinctes et contient l'heure d'arrivée.
-
-7) Ville d'arrivée : Ville où le vol atterrira. Il s'agit d'une variable catégorielle qui comprend 6 villes uniques.
-
-8) Classe : Cette variable catégorielle contient des informations sur la classe de siège. Elle comporte deux valeurs distinctes : Affaires et Économie.
-
-9) Durée : Variable continue affichant la durée totale du trajet entre les villes, en heures.
-
-10) Jours restants : Caractéristique dérivée calculée en soustrayant la date de réservation de la date du voyage.
-
-11) Prix : Variable cible contenant le prix du billet.
+1) **Compagnie aérienne** : variable catégorielle (6 compagnies).
+2) **Vol** : code de vol (catégorielle).
+3) **Ville de départ** : variable catégorielle (6 villes).
+4) **Heure de départ** : variable catégorielle dérivée (6 créneaux horaires).
+5) **Escales** : variable catégorielle (3 valeurs distinctes).
+6) **Heure d'arrivée** : variable catégorielle dérivée (6 créneaux horaires).
+7) **Ville d'arrivée** : variable catégorielle (6 villes).
+8) **Classe** : variable catégorielle (Business / Economy).
+9) **Durée** : variable continue (durée totale du trajet en heures).
+10) **Jours restants** : différence entre date de réservation et date du voyage.
+11) **Prix** : variable cible.
 
 ## Ce qui a été fait
-- **EDA & Preprocessing** : Étude des données, gestion des variables manquantes, normalisation. Un notebook complet contient nos déductions.
-- **Modèle Non Supervisé (K-Means)** : On a utilisé cet algoritme pour découvrir 3 profils types de vols selon le prix et la durée. Utile pour segmenter les clients ! Lisez le `.ipynb` pour comprendre notre conclusion.
-- **Modèle Supervisé (Random Forest)** : Modèle complet d'une précision de prédiction très correcte pour estimer les prix. Il a été mis en fichier `.pkl` à la fin.
-- **API & Interface Web** : Un point d'entrée API (`/predict`) tournant avec FastAPI, couplé à une belle interface graphique dynamique développée avec **Streamlit** pour tester le modèle super facilement.
 
-##  Lancer le projet entier avec Docker
+- **EDA & Preprocessing** : étude des données, gestion des valeurs manquantes, encodage et normalisation selon les besoins.
+- **Modèle non supervisé (K-Means)** : segmentation des vols en profils types selon le prix et la durée.
+- **Modèle supervisé (Random Forest)** : prédiction du prix des billets, export du modèle en `.pkl`.
+- **API & interface web** : API FastAPI (`/predict`) + interface Streamlit pour tester les prédictions.
 
-On a implémenté un système sous Docker pour ne pas à avoir à installer localement toutes les librairies et être sûrs que ça tourne partout d'un seul clic. 
+## Lancer le projet avec Docker
 
-**Prérequis** : Avoir installé Docker Desktop.
+Un environnement Docker est fourni pour lancer le projet sans installer toutes les dépendances en local.
 
-**1. Lancer les serveurs (API + Interface Web) :**
-Dans votre terminal (sous Windows PowerShell ou Cmd par exemple), à la racine du dossier, executez : 
+**Prérequis :** Docker Desktop installé.
+
+### 1. Lancer les services (API + interface web)
+
+Depuis la racine du projet, dans PowerShell ou CMD :
+
 ```bash
 docker-compose up --build
 ```
-*Le serveur va télécharger l'environnement complet et lancer les deux applications en parallèle.*
 
-**2. Tester le modèle visuellement !**
-- Allez sur la page de l'Application Web Streamlit : **`http://127.0.0.1:8501`**
-Sélectionnez votre ville, la durée du vol, etc. et cliquez sur Prédire pour voir la prédiction de nos modèles !
+### 2. Tester l'application
 
-*l'API pure tourne en background sur `http://127.0.0.1:8000/docs`).*
+- Interface Streamlit : **http://127.0.0.1:8501**
+- Documentation API FastAPI : **http://127.0.0.1:8000/docs**
 
 Merci pour la lecture et la revue !
